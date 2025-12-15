@@ -27,12 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4️⃣ Linting
-      - name: Lint code
+      # 4️⃣ Linting (static code check)
+      - name: Lint with flake8
         run: |
           flake8 app.py
 
-      # 5️⃣ Unit tests
+      # 5️⃣ Unit Tests (FIXED IMPORT ISSUE)
       - name: Run unit tests
+        env:
+          PYTHONPATH: .
         run: |
           pytest
